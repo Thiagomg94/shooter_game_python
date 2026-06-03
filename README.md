@@ -6,13 +6,10 @@ Este projeto consiste em um jogo de tiro/nave horizontal (*side-scrolling shoot 
 
 ## 🎓 Contexto Acadêmico
 
-*   **Instituição:** [Inserir Nome da Instituição - ex: Universidade Federal de...]
-*   **Curso:** [Inserir Nome do Curso - ex: Bacharelado em Ciência da Computação]
-*   **Disciplina:** [Inserir Nome da Disciplina - ex: Programação Orientada a Objetos / Padrões de Projeto]
-*   **Semestre/Ano:** [Inserir Semestre/Ano - ex: 2026/1]
-*   **Autores:**
-    *   [Nome do Integrante 1 - Matrícula]
-    *   [Nome do Integrante 2 - Matrícula]
+*   **Instituição:** Uninter - Centro Universitário Internacional
+*   **Curso:** Análise e Desenvolvimento de Sistemas
+*   **Disciplina:** Linguagem de Programação Aplicada
+*   **Semestre/Ano:** 2026/3
 
 ---
 
