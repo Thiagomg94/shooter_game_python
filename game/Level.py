@@ -9,7 +9,7 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from game.Const import COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, COLOR_GREEN, COLOR_CYAN, \
+from game.Const import COLOR_WHITE, WIN_HEIGHT, MenuOption, EVENT_ENEMY, SPAWN_TIME, COLOR_GREEN, COLOR_CYAN, \
     EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL
 from game.Enemy import Enemy
 from game.Entity import Entity
@@ -55,7 +55,7 @@ class Level:
         self.entity_list.append(player)
 
         # Adiciona Player2 apenas nos modos de dois jogadores
-        if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
+        if game_mode in [MenuOption.COOP, MenuOption.COMPETITIVE]:
             player = EntityFactory.get_entity('Player2')
             player.score = player_score[1]
             self.entity_list.append(player)

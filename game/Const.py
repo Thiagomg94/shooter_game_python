@@ -7,6 +7,7 @@ sem precisar editar múltiplos arquivos.
 """
 
 import pygame
+from enum import Enum
 
 # ---------------------------------------------------------------------------
 # C — Cores (R, G, B)
@@ -154,12 +155,13 @@ EVENT_TIMEOUT = pygame.USEREVENT + 2 # decrementa o temporizador do nível
 # ---------------------------------------------------------------------------
 # M — Menu
 # ---------------------------------------------------------------------------
-# Tupla com as opções exibidas no menu principal, na ordem em que aparecem.
-MENU_OPTION = ("NEW GAME 1P",
-               "NEW GAME 2P - COOPERATIVE",
-               "NEW GAME 2P - COMPETITIVE",
-               "SCORE",
-               "EXIT",)
+# Classe com as opções exibidas no menu principal, na ordem em que aparecem.
+class MenuOption(Enum):
+    ONE_PLAYER  = "NEW GAME 1P"
+    COOP        = "NEW GAME 2P - COOPERATIVE"
+    COMPETITIVE = "NEW GAME 2P - COMPETITIVE"
+    SCORE       = "SCORE"
+    EXIT        = "EXIT"
 
 # ---------------------------------------------------------------------------
 # P — Teclas do jogador
