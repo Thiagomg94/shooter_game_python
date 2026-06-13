@@ -8,6 +8,7 @@ from game.EnemyShot import EnemyShot
 from game.Entity import Entity
 from game.Player import Player
 from game.PlayerShot import PlayerShot
+from game.HealthItem import HealthItem, HEALTH_RESTORE
 
 
 class EntityMediator:
@@ -46,6 +47,10 @@ class EntityMediator:
             if ent.rect.right <= 0:
                 ent.health = 0 # saiu da tela sem atingir nenhum jogador
 
+        if isinstance(ent, HealthItem):
+            if ent.rect.right <= 0:
+                ent.health = 0 # saiu sem ser coletado
+
     @staticmethod
     def __verify_collision_entity(ent_one: Entity, ent_two: Entity):
         """Verifica colisão entre duas entidades e aplica o dano mútuo se válido.
@@ -72,6 +77,10 @@ class EntityMediator:
             valid_interaction = True
         elif isinstance(ent_one, EnemyShot) and isinstance(ent_two, Player):
             valid_interaction = True
+        elif isinstance(ent_one, Player) and isinstance(ent_two, HealthItem):
+            valid_interaction = True
+        elif isinstance(ent_one, HealthItem) and isinstance(ent_two, Player):
+            valid_interaction = True
 
         if valid_interaction:
             # Detecção AABB: os retângulos sobrepõem-se quando todas as condições
@@ -81,13 +90,21 @@ class EntityMediator:
                 ent_one.rect.bottom >= ent_two.rect.top and
                 ent_one.rect.top <= ent_two.rect.bottom):
 
-                # Aplica dano mútuo: cada entidade recebe o dano da outra
-                ent_one.health -= ent_two.damage
-                ent_two.health -= ent_one.damage
+                # tratamento: HealthItem cura em vez de causar dano
+                if isinstance(ent_one, HealthItem):
+                    ent_two.health += HEALTH_RESTORE
+                    ent_one.health = 0
+                elif isinstance(ent_two, HealthItem):
+                    ent_one.health += HEALTH_RESTORE
+                    ent_two.health = 0
+                else:
+                    # Aplica dano mútuo: cada entidade recebe o dano da outra
+                    ent_one.health -= ent_two.damage
+                    ent_two.health -= ent_one.damage
 
-                # Registra quem causou o dano (usado para atribuir pontuação)
-                ent_one.last_dmg = ent_two.name
-                ent_two.last_dmg = ent_one.name
+                    # Registra quem causou o dano (usado para atribuir pontuação)
+                    ent_one.last_dmg = ent_two.name
+                    ent_two.last_dmg = ent_one.name
 
     @staticmethod
     def __give_score(enemy: Enemy, entity_list: list[Entity]):
