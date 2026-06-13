@@ -10,7 +10,7 @@ from pygame import Surface, Rect
 from pygame.font import Font
 
 from game.Const import COLOR_WHITE, WIN_HEIGHT, MenuOption, EVENT_ENEMY, SPAWN_TIME, COLOR_GREEN, COLOR_CYAN, \
-    EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL
+    EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL, EVENT_HEALTH_ITEM, SPAWN_HEALTH_ITEM
 from game.Enemy import Enemy
 from game.Entity import Entity
 from game.EntityFactory import EntityFactory
@@ -65,6 +65,7 @@ class Level:
         # então não há vazamento de timers entre níveis.
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
         pygame.time.set_timer(EVENT_TIMEOUT, TIMEOUT_STEP)
+        pygame.time.set_timer(EVENT_HEALTH_ITEM, SPAWN_TIME)
 
     def run(self, player_score: list[int]):
         """Executa o loop principal do nível até que ele termine.
@@ -126,6 +127,9 @@ class Level:
                             if isinstance(ent, Player) and ent.name == "Player2":
                                 player_score[1] = ent.score
                         return True # jogadores sobreviveram
+
+                if event.type == EVENT_HEALTH_ITEM:
+                    self.entity_list.append(EntityFactory.get_entity("HealthItem"))
 
             # --- Verificação de jogadores vivos ---
             if not any(isinstance(ent, Player) for ent in self.entity_list):
