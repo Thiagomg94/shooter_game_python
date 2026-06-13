@@ -45,6 +45,7 @@ ENTITY_SPEED = {
     "Enemy1Shot": 5, # projétil rápido do inimigo básico
     "Enemy2": 1,
     "Enemy2Shot": 2, # projétil mais lento do inimigo avançado
+    "HealthItem": 2,
 }
 
 # Pontos de vida iniciais de cada entidade.
@@ -70,6 +71,7 @@ ENTITY_HEALTH = {
     "Enemy1Shot": 1,
     "Enemy2": 60,
     "Enemy2Shot": 1,
+    "HealthItem": 1,
 }
 
 # Frames entre cada disparo de uma entidade.
@@ -91,9 +93,6 @@ ENTITY_SHOT_DELAY = {
 #
 # NOTA: Player vs Enemy (corpo a corpo) não é verificado atualmente,
 #       portanto Enemy1.damage e Enemy2.damage não são aplicados em jogo.
-#
-# CORREÇÃO: todos os valores de projéteis estavam zerados (bug), tornando
-#           o combate completamente não-funcional. Valores corrigidos abaixo.
 
 ENTITY_DAMAGE = {
     "Level1Bg0": 0,
@@ -116,6 +115,7 @@ ENTITY_DAMAGE = {
     "Enemy1Shot": 25,
     "Enemy2": 125,
     "Enemy2Shot": 20,
+    "HealthItem": 0,
 }
 
 # Pontuação associada a cada entidade.
@@ -143,6 +143,7 @@ ENTITY_SCORE = {
     "Enemy1Shot": 20,
     "Enemy2": 1,
     "Enemy2Shot": 15,
+    "HealthItem": 0,
 }
 
 # ---------------------------------------------------------------------------
@@ -151,6 +152,7 @@ ENTITY_SCORE = {
 # pygame.USEREVENT é o primeiro ID disponível para eventos do usuário.
 EVENT_ENEMY = pygame.USEREVENT + 1 # dispara o spawn de um novo inimigo
 EVENT_TIMEOUT = pygame.USEREVENT + 2 # decrementa o temporizador do nível
+EVENT_HEALTH_ITEM = pygame.USEREVENT + 3
 
 # ---------------------------------------------------------------------------
 # M — Menu
@@ -176,6 +178,7 @@ PLAYER_KEY_SHOOT = {"Player1": pygame.K_RCTRL, "Player2": pygame.K_LCTRL}
 # S — Spawn
 # ---------------------------------------------------------------------------
 SPAWN_TIME = 4000 # intervalo em milissegundos entre spawns de inimigos
+SPAWN_HEALTH_ITEM = 45000 # aparece a cada 45 segundos
 
 # ---------------------------------------------------------------------------
 # T — Temporizador do nível
