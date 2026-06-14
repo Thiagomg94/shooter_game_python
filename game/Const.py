@@ -17,6 +17,7 @@ COLOR_WHITE = (255, 255, 255)
 COLOR_YELLOW = (255, 255, 0)
 COLOR_GREEN = (0, 128, 0)
 COLOR_CYAN = (0, 128, 128)
+COLOR_BLACK = (0, 0, 0)
 
 # ---------------------------------------------------------------------------
 # E — Atributos das entidades
