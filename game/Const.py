@@ -45,6 +45,8 @@ ENTITY_SPEED = {
     "Enemy1Shot": 5, # projétil rápido do inimigo básico
     "Enemy2": 1,
     "Enemy2Shot": 2, # projétil mais lento do inimigo avançado
+    "Enemy3": 1,
+    "Enemy3Shot": 3,
     "HealthItem": 2,
 }
 
@@ -71,6 +73,8 @@ ENTITY_HEALTH = {
     "Enemy1Shot": 1,
     "Enemy2": 60,
     "Enemy2Shot": 1,
+    "Enemy3": 160, # inimigo mais resistente que Enemy1 e Enemy2
+    "Enemy3Shot": 1,
     "HealthItem": 1,
 }
 
@@ -80,15 +84,16 @@ ENTITY_SHOT_DELAY = {
     "Player1": 20,
     "Player2": 15, # Player2 atira um pouco mais rápido
     "Enemy1": 100,
-    "Enemy2": 200, # Enemy2 é mais lento para atirar
+    "Enemy2": 100,
+    "Enemy3": 150, # Enemy3 é mais lento para atirar
 }
 
 # Dano causado pela entidade ao colidir com outra.
 #
 # Colisões verificadas pelo EntityMediator:
-#   • Enemy   vs PlayerShot → Enemy.health   -= PlayerShot.damage
+#   • Enemy vs PlayerShot → Enemy.health -= PlayerShot.damage
 #                              PlayerShot.health -= Enemy.damage
-#   • Player  vs EnemyShot  → Player.health  -= EnemyShot.damage
+#   • Player vs EnemyShot → Player.health -= EnemyShot.damage
 #                              EnemyShot.health -= Player.damage
 #
 # NOTA: Player vs Enemy (corpo a corpo) não é verificado atualmente,
@@ -115,6 +120,8 @@ ENTITY_DAMAGE = {
     "Enemy1Shot": 25,
     "Enemy2": 125,
     "Enemy2Shot": 20,
+    "Enemy3": 150,
+    "Enemy3Shot": 30,
     "HealthItem": 0,
 }
 
@@ -143,6 +150,8 @@ ENTITY_SCORE = {
     "Enemy1Shot": 20,
     "Enemy2": 1,
     "Enemy2Shot": 15,
+    "Enemy3": 1,
+    "Enemy3Shot": 30, # vale mais pontos por ser mais resistente
     "HealthItem": 0,
 }
 
@@ -184,7 +193,7 @@ SPAWN_HEALTH_ITEM = 45000 # aparece a cada 45 segundos
 # T — Temporizador do nível
 # ---------------------------------------------------------------------------
 TIMEOUT_STEP = 100 # ms descontados a cada tick do EVENT_TIMEOUT
-TIMEOUT_LEVEL = 20000 # duração total do nível em milissegundos (20 segundos)
+TIMEOUT_LEVEL = 60000 # duração total do nível em milissegundos
 
 # ---------------------------------------------------------------------------
 # W — Janela
