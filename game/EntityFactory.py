@@ -42,7 +42,7 @@ class EntityFactory:
                 # Cada camada gera dois sprites: um dentro da tela e outro à direita,
                 # formando o par necessário para o scroll infinito.
                 list_bg = []
-                for i in range(7): # level1bg images number
+                for i in range(5): # level1bg images number
                     list_bg.append(Background(f"Level1Bg{i}", position))
                     list_bg.append(Background(f"Level1Bg{i}", position=(WIN_WIDTH, 0)))
                 return list_bg
