@@ -9,8 +9,8 @@ import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from game.Const import COLOR_BLACK, WIN_HEIGHT, MenuOption, EVENT_ENEMY, SPAWN_TIME, COLOR_GREEN, COLOR_CYAN, \
-    EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL, EVENT_HEALTH_ITEM, SPAWN_HEALTH_ITEM
+from game.Const import COLOR_WHITE, WIN_HEIGHT, MenuOption, EVENT_ENEMY, SPAWN_TIME, \
+    EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL, EVENT_HEALTH_ITEM
 from game.Enemy import Enemy
 from game.Entity import Entity
 from game.EntityFactory import EntityFactory
@@ -101,10 +101,10 @@ class Level:
                 # Exibe HUD com vida e pontuação de cada jogador
                 if ent.name == "Player1":
                     self.text_level(text_size=14, text=f"Player 1 - Health: {ent.health} | Score: {ent.score}",
-                                    text_color=COLOR_GREEN, text_pos=(10, 25))
+                                    text_color=COLOR_WHITE, text_pos=(10, 25))
                 if ent.name == "Player2":
                     self.text_level(text_size=14, text=f"Player 2 - Health: {ent.health} | Score: {ent.score}",
-                                    text_color=COLOR_CYAN, text_pos=(10, 45))
+                                    text_color=COLOR_WHITE, text_pos=(10, 45))
 
             # --- Processamento de eventos ---
             for event in pygame.event.get():
@@ -137,13 +137,13 @@ class Level:
 
             # --- HUD: informações de debug e tempo restante ---
             self.text_level(text_size=14, text=f"{self.name} - Timeout: {self.timeout / 1000:.1f}s",
-                            text_color=COLOR_BLACK, text_pos=(10, 5))
+                            text_color=COLOR_WHITE, text_pos=(10, 5))
 
             self.text_level(text_size=14, text=f"fps: {clock.get_fps():.0f}",
-                            text_color=COLOR_BLACK, text_pos=(10, WIN_HEIGHT - 35))
+                            text_color=COLOR_WHITE, text_pos=(10, WIN_HEIGHT - 35))
 
             self.text_level(text_size=14, text=f"entidades: {len(self.entity_list)}",
-                            text_color=COLOR_BLACK, text_pos=(10, WIN_HEIGHT - 20))
+                            text_color=COLOR_WHITE, text_pos=(10, WIN_HEIGHT - 20))
 
             pygame.display.flip()
 

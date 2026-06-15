@@ -1,4 +1,4 @@
-# Mountain Shooter 🚀
+# City Shooter 🚀
 
 Este projeto consiste em um jogo de tiro/nave horizontal (*side-scrolling shoot 'em up*) desenvolvido em **Python** utilizando a biblioteca **Pygame**. O projeto foi estruturado com foco em boas práticas de programação orientada a objetos (POO) e aplicação de padrões de projeto (*design patterns*), caracterizando-se como um excelente recurso prático de cunho acadêmico.
 
@@ -13,7 +13,7 @@ Este projeto consiste em um jogo de tiro/nave horizontal (*side-scrolling shoot 
 
 ---
 
-## 🎮 O Jogo: Mountain Shooter
+## 🎮 O Jogo: City Shooter
 
 O objetivo principal do jogo é sobreviver e acumular pontos ao derrotar inimigos em um ambiente montanhoso que se move dinamicamente com efeitos de paralaxe.
 
@@ -23,8 +23,8 @@ O objetivo principal do jogo é sobreviver e acumular pontos ao derrotar inimigo
 3.  **NEW GAME 2P - COMPETITIVE (Competitivo):** Dois jogadores se enfrentam indiretamente para ver quem consegue a maior pontuação na fase. No final, a pontuação gravada é a do **jogador vencedor (maior score)**.
 
 ### Estrutura das Fases:
-*   **Level 1:** O nível inicial do jogo. Possui 7 camadas de background em parallax, inimigos básicos e velocidade balanceada. O tempo limite da fase é de 20 segundos (`TIMEOUT_LEVEL = 20000ms`).
-*   **Level 2:** O nível final. Possui 5 camadas de background em parallax, velocidade de movimentação modificada e spawns dinâmicos. A conclusão bem-sucedida do Level 2 leva os jogadores vitoriosos à gravação de sua pontuação.
+*   **Level 1:** O nível inicial do jogo. Possui 10 camadas de background em parallax (`Level1Bg0` a `Level1Bg9`), inimigos básicos/avançados e velocidade balanceada. O tempo limite da fase é de 60 segundos (`TIMEOUT_LEVEL = 60000ms`).
+*   **Level 2:** O nível final. Possui 9 camadas de background em parallax (`Level2Bg0` a `Level2Bg8`), velocidade de movimentação modificada e spawns dinâmicos (incluindo inimigos mais fortes e itens de cura). O tempo limite da fase é de 60 segundos (`TIMEOUT_LEVEL = 60000ms`).
 
 ---
 
@@ -34,11 +34,11 @@ A arquitetura do projeto foi pensada para demonstrar a aplicação de padrões d
 
 ### 1. **Mediator (Padrão de Mediação)**
 *   **Implementação:** [EntityMediator](file:///c:/Users/Thiago/PycharmProjects/PythonProject/game/EntityMediator.py)
-*   **Objetivo:** Centraliza a detecção de colisões (AABB - *Axis-Aligned Bounding Box*), verificação de vida e limites da janela. Sem o mediator, cada entidade teria que monitorar as coordenadas de todas as outras entidades ativas, gerando uma complexidade de acoplamento de $O(n^2)$. Com o mediator, as entidades apenas gerenciam sua própria locomoção e disparo, enquanto o `EntityMediator` atua como o ponto de decisão e distribuição de pontos.
+*   **Objetivo:** Centraliza a detecção de colisões (AABB - *Axis-Aligned Bounding Box*), verificação de vida e limites da janela. Sem o mediator, cada entidade teria que monitorar as coordenadas de todas as outras entidades ativas, gerando uma complexidade de acoplamento de $O(n^2)$. Com o mediator, as entidades apenas gerenciam sua própria locomoção e disparo, enquanto o `EntityMediator` atua como o ponto de decisão, distribuição de pontos e aplicação de efeitos especiais (como a cura concedida pelo `HealthItem` ao colidir com o `Player`).
 
 ### 2. **Factory Method / Simple Factory (Fábrica Simples)**
 *   **Implementação:** [EntityFactory](file:///c:/Users/Thiago/PycharmProjects/PythonProject/game/EntityFactory.py)
-*   **Objetivo:** Encapsula a lógica de criação de entidades de jogo a partir de strings de identificação (como `"Level1Bg"`, `"Player1"`, `"Enemy2"`). A fábrica instancia a classe correta com sua respectiva posição inicial, desacoplando o carregamento de fases e a inicialização de entidades da lógica de execução do loop principal (`Level`).
+*   **Objetivo:** Encapsula a lógica de criação de entidades de jogo a partir de strings de identificação (como `"Level1Bg"`, `"Player1"`, `"Enemy3"`, `"HealthItem"`). A fábrica instancia a classe correta com sua respectiva posição inicial, desacoplando o carregamento de fases e a inicialização de entidades da lógica de execução do loop principal (`Level`).
 
 ### 3. **Proxy (ou Data Access Object - DAO)**
 *   **Implementação:** [DBProxy](file:///c:/Users/Thiago/PycharmProjects/PythonProject/game/DBProxy.py)
@@ -52,8 +52,9 @@ A arquitetura do projeto foi pensada para demonstrar a aplicação de padrões d
     *   [Enemy](file:///c:/Users/Thiago/PycharmProjects/PythonProject/game/Enemy.py)
     *   [PlayerShot](file:///c:/Users/Thiago/PycharmProjects/PythonProject/game/PlayerShot.py)
     *   [EnemyShot](file:///c:/Users/Thiago/PycharmProjects/PythonProject/game/EnemyShot.py)
+    *   [HealthItem](file:///c:/Users/Thiago/PycharmProjects/PythonProject/game/HealthItem.py)
     
-    Implementam comportamentos específicos para o movimento (por exemplo, leitura de teclado para o jogador, deslocamento automático para a esquerda com paralaxe para o background e trajetórias programadas para os inimigos).
+    Implementam comportamentos específicos para o movimento (por exemplo, leitura de teclado para o jogador, deslocamento automático para a esquerda com paralaxe para o background, trajetórias programadas para os inimigos e movimento horizontal para itens de cura).
 
 ---
 
@@ -72,6 +73,9 @@ Os comandos de controle foram mapeados de forma a viabilizar a experiência mult
 > [!NOTE]
 > *   Na tela de inserção de recorde (**You Win**), digite exatamente **4 caracteres** usando seu teclado e pressione **ENTER** para salvar.
 > *   Na tela de **Ranking (Score)**, pressione **ESC** para retornar ao menu principal.
+
+> [!TIP]
+> *   Durante as fases, itens de cura (**HealthItem**) surgirão a cada 45 segundos, movendo-se da direita para a esquerda. Ao serem coletados por qualquer jogador, restauram **5 pontos de vida**.
 
 ---
 
@@ -92,6 +96,7 @@ Abaixo está descrita a organização modular do repositório:
 │   ├── EntityFactory.py     # Fábrica simples para instanciação de entidades
 │   ├── EntityMediator.py    # Gerenciador centralizado de colisões e ciclo de vida
 │   ├── Game.py              # Fluxo principal do jogo e alternância de telas
+│   ├── HealthItem.py        # Item de cura que se move e recupera vida dos jogadores
 │   ├── Level.py             # Gerenciamento do ciclo da fase (game loop, spawn, timeout)
 │   ├── Menu.py              # Renderização e navegação do menu principal
 │   ├── Player.py            # Lógica e comandos do jogador humano

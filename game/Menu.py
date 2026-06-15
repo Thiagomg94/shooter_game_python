@@ -58,7 +58,7 @@ class Menu:
 
             # Título do jogo
             self.menu_text(text_size=50,
-                           text="Mountain",
+                           text="City",
                            text_color=COLOR_ORANGE,
                            text_center_pos=((WIN_WIDTH / 2), 70))
 

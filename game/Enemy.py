@@ -16,7 +16,7 @@ class Enemy(Entity):
     def __init__(self, name: str, position: tuple):
         """
         Args:
-            name: 'Enemy1' ou 'Enemy2', determina atributos e cadência de tiro.
+            name: 'Enemy1', 'Enemy2' ou 'Enemy3', determina atributos e cadência de tiro.
             position: Posição inicial (x, y) — gerada aleatoriamente pelo EntityFactory.
         """
         super().__init__(name, position)

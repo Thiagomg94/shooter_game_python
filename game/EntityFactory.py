@@ -38,19 +38,19 @@ class EntityFactory:
         """
         match entity_name:
             case "Level1Bg":
-                # Cria 7 camadas de background (Level1Bg0 a Level1Bg6).
+                # Cria 10 camadas de background (Level1Bg0 a Level1Bg9).
                 # Cada camada gera dois sprites: um dentro da tela e outro à direita,
                 # formando o par necessário para o scroll infinito.
                 list_bg = []
-                for i in range(5): # level1bg images number
+                for i in range(10): # level1bg images number
                     list_bg.append(Background(f"Level1Bg{i}", position))
                     list_bg.append(Background(f"Level1Bg{i}", position=(WIN_WIDTH, 0)))
                 return list_bg
 
             case "Level2Bg":
-                # Cria 5 camadas de background para o Level 2.
+                # Cria 9 camadas de background para o Level 2 (Level2Bg0 a Level2Bg8).
                 list_bg = []
-                for i in range(5): # level2bg images number
+                for i in range(9): # level2bg images number
                     list_bg.append(Background(f"Level2Bg{i}", position))
                     list_bg.append(Background(f"Level2Bg{i}", position=(WIN_WIDTH, 0)))
                 return list_bg
