@@ -91,7 +91,7 @@ Abaixo está descrita a organização modular do repositório:
 │   ├── Const.py             # Configurações globais (velocidades, vida, cores, danos, teclas)
 │   ├── DBProxy.py           # Comunicação e persistência de dados no SQLite
 │   ├── Enemy.py             # Lógica e movimentação das naves inimigas
-    ├── Enemy4.py            # Lógica e movimentação do inimigo 4
+│   ├── Enemy4.py            # Lógica e movimentação do inimigo 4
 │   ├── EnemyShot.py         # Projétil disparado pelos inimigos
 │   ├── Entity.py            # Classe Abstrata base para todas as entidades
 │   ├── EntityFactory.py     # Fábrica simples para instanciação de entidades
