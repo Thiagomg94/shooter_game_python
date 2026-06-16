@@ -79,6 +79,8 @@ ENTITY_SPEED = {
     "Enemy2Shot": 2, # projétil mais lento do inimigo avançado
     "Enemy3": 1,
     "Enemy3Shot": 3,
+    "Enemy4": 2,
+    "Enemy4Shot": 4,
     "HealthItem": 2,
 }
 
@@ -114,6 +116,8 @@ ENTITY_HEALTH = {
     "Enemy2": 60,
     "Enemy2Shot": 1,
     "Enemy3": 160, # inimigo mais resistente que Enemy1 e Enemy2
+    "Enemy4": 40,
+    "Enemy4Shot": 1,
     "Enemy3Shot": 1,
     "HealthItem": 1,
 }
@@ -126,6 +130,7 @@ ENTITY_SHOT_DELAY = {
     "Enemy1": 100,
     "Enemy2": 100,
     "Enemy3": 150, # Enemy3 é mais lento para atirar
+    "Enemy4": 80,
 }
 
 # Dano causado pela entidade ao colidir com outra.
@@ -170,6 +175,8 @@ ENTITY_DAMAGE = {
     "Enemy2Shot": 20,
     "Enemy3": 150,
     "Enemy3Shot": 30,
+    "Enemy4": 100,
+    "Enemy4Shot": 20,
     "HealthItem": 0,
 }
 
@@ -208,6 +215,8 @@ ENTITY_SCORE = {
     "Enemy2Shot": 15,
     "Enemy3": 1,
     "Enemy3Shot": 30, # vale mais pontos por ser mais resistente
+    "Enemy4": 1,
+    "Enemy4Shot": 35,
     "HealthItem": 0,
 }
 

@@ -114,7 +114,7 @@ class Level:
 
                 if event.type == EVENT_ENEMY:
                     # Spawna um inimigo aleatório pela borda direita
-                    choice_enemy = random.choice(("Enemy1", "Enemy2", "Enemy3"))
+                    choice_enemy = random.choice(("Enemy1", "Enemy2", "Enemy3", "Enemy4"))
                     self.entity_list.append(EntityFactory.get_entity(choice_enemy))
 
                 if event.type == EVENT_TIMEOUT:

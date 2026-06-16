@@ -7,6 +7,7 @@ import random
 from game.Background import Background
 from game.Const import WIN_WIDTH, WIN_HEIGHT
 from game.Enemy import Enemy
+from game.Enemy4 import Enemy4
 from game.Player import Player
 from game.HealthItem import HealthItem
 
@@ -72,6 +73,9 @@ class EntityFactory:
 
             case "Enemy3":
                 return Enemy("Enemy3",(WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
+
+            case "Enemy4":
+                return Enemy4(position=(WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
 
             case "HealthItem":
                 return HealthItem(position=(WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
