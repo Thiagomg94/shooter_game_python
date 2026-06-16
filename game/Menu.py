@@ -5,7 +5,7 @@ Módulo que define o menu principal do jogo.
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from game.Const import WIN_WIDTH, COLOR_ORANGE, COLOR_WHITE, MenuOption, COLOR_YELLOW, resource_path
+from game.Const import WIN_WIDTH, COLOR_ORANGE, COLOR_WHITE, MenuOption, COLOR_YELLOW, resource_path, WIN_HEIGHT
 
 
 class Menu:
@@ -72,6 +72,12 @@ class Menu:
             for i, mode in enumerate(options):
                 color = COLOR_YELLOW if i == menu_option else COLOR_WHITE
                 self.menu_text(20, mode.value, color, (WIN_WIDTH / 2, 200 + 20 * i))
+
+            # Guia de teclas — exibido no rodapé do menu
+            self.menu_text(12, "PLAYER 1: SETAS para mover  |  CTRL DIR para atirar",
+                           COLOR_WHITE, (WIN_WIDTH / 2, WIN_HEIGHT - 30))
+            self.menu_text(12, "PLAYER 2: W A S D para mover  |  CTRL ESQ para atirar",
+                           COLOR_WHITE, (WIN_WIDTH / 2, WIN_HEIGHT - 15))
 
             pygame.display.flip()
             clock.tick(60)
