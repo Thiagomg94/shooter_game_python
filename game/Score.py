@@ -10,7 +10,7 @@ from pygame import Surface, Rect
 from pygame.constants import K_ESCAPE
 from pygame.font import Font
 
-from game.Const import COLOR_YELLOW, SCORE_POS, MenuOption, COLOR_WHITE
+from game.Const import COLOR_YELLOW, SCORE_POS, MenuOption, COLOR_WHITE, resource_path
 from game.DBProxy import DBProxy
 
 
@@ -27,7 +27,7 @@ class Score:
             window: Superfície principal onde as telas de score serão desenhadas.
         """
         self.window = window
-        self.image = pygame.image.load("./assets/ScoreBg.png").convert_alpha()
+        self.image = pygame.image.load(resource_path("./assets/ScoreBg.png")).convert_alpha()
         self.rect = self.image.get_rect()
 
     def save(self, game_mode: str, player_score: list[int]):
@@ -43,7 +43,7 @@ class Score:
             game_mode: Modo de jogo (um dos valores de MENU_OPTION).
             player_score: Lista [score_p1, score_p2] ao final da partida.
         """
-        pygame.mixer_music.load("./assets/Score.mp3")
+        pygame.mixer_music.load(resource_path("./assets/Score.mp3"))
         pygame.mixer_music.play(-1)
         db_proxy = DBProxy("DBScore")
 
@@ -102,7 +102,7 @@ class Score:
 
         Permanece na tela até o jogador pressionar ESC para voltar ao menu.
         """
-        pygame.mixer_music.load("./assets/Score.mp3")
+        pygame.mixer_music.load(resource_path("./assets/Score.mp3"))
         pygame.mixer_music.play(-1)
 
         # Desenha o fundo uma vez (a tela de ranking não precisa de animação)
@@ -135,10 +135,10 @@ class Score:
         """Renderiza um texto centralizado em uma posição da tela de score.
 
         Args:
-        text_size: Tamanho da fonte em pontos.
-        text: Conteúdo do texto.
-        text_color: Cor RGB do texto.
-        text_center_pos: Coordenada (x, y) do centro do texto.
+            text_size: Tamanho da fonte em pontos.
+            text: Conteúdo do texto.
+            text_color: Cor RGB do texto.
+            text_center_pos: Coordenada (x, y) do centro do texto.
         """
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
         text_surface: Surface = text_font.render(text, True, text_color).convert_alpha()

@@ -28,13 +28,13 @@ class EntityFactory:
         Para jogadores e inimigos, retorna uma única instância.
 
         Args:
-        entity_name: Nome da entidade a criar (ex: 'Level1Bg', 'Player1', 'Enemy2').
-        position: Posição inicial usada para backgrounds. Ignorada para jogadores
-        e inimigos, que têm posições fixas ou aleatórias definidas aqui.
+            entity_name: Nome da entidade a criar (ex: 'Level1Bg', 'Player1', 'Enemy2').
+            position: Posição inicial usada para backgrounds. Ignorada para jogadores
+            e inimigos, que têm posições fixas ou aleatórias definidas aqui.
 
         Returns:
-        Uma instância de Entity ou uma lista de instâncias (para backgrounds),
-        ou None se o nome não for reconhecido.
+            Uma instância de Entity ou uma lista de instâncias (para backgrounds),
+            ou None se o nome não for reconhecido.
         """
         match entity_name:
             case "Level1Bg":

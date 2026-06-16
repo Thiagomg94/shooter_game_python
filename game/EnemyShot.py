@@ -15,9 +15,9 @@ class EnemyShot(Entity):
     """
     def __init__(self, name: str, position: tuple):
         """
-        Args:
-        name: Identificador do projétil ('Enemy1Shot' ou 'Enemy2Shot').
-        position: Posição inicial (x, y) — normalmente o centro do inimigo que atirou.
+            Args:
+                name: Identificador do projétil ('Enemy1Shot' ou 'Enemy2Shot').
+                position: Posição inicial (x, y) — normalmente o centro do inimigo que atirou.
         """
         super().__init__(name, position)
 

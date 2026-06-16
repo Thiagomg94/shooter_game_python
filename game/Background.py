@@ -23,8 +23,8 @@ class Background(Entity):
 
     def move(self):
         """Desloca o background para a esquerda e faz o reposicionamento em loop.
-            Quando o lado direito do sprite ultrapassa o limite esquerdo da tela,
-            o sprite é movido para o início da tela à direita, criando scroll contínuo.
+        Quando o lado direito do sprite ultrapassa o limite esquerdo da tela,
+        o sprite é movido para o início da tela à direita, criando scroll contínuo.
         """
         self.rect.centerx -= ENTITY_SPEED[self.name] # movimenta para a esquerda
 

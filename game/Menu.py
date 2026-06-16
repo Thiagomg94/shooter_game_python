@@ -5,16 +5,16 @@ Módulo que define o menu principal do jogo.
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from game.Const import WIN_WIDTH, COLOR_ORANGE, COLOR_WHITE, MenuOption, COLOR_YELLOW
+from game.Const import WIN_WIDTH, COLOR_ORANGE, COLOR_WHITE, MenuOption, COLOR_YELLOW, resource_path
 
 
 class Menu:
     """Tela de menu principal com navegação por teclado.
 
-        Exibe as opções de jogo e aguarda a seleção do usuário pelas teclas
-        direcional para cima/baixo e ENTER. A opção selecionada é destacada
-        em amarelo; as demais permanecem em branco.
-        """
+    Exibe as opções de jogo e aguarda a seleção do usuário pelas teclas
+    direcional para cima/baixo e ENTER. A opção selecionada é destacada
+    em amarelo; as demais permanecem em branco.
+     """
 
     def __init__(self, window):
         """
@@ -22,9 +22,9 @@ class Menu:
             window: Superfície principal do Pygame onde o menu será desenhado.
         """
         self.window = window
-        self.image = pygame.image.load("./assets/MenuBg.png").convert_alpha()
+        self.image = pygame.image.load(resource_path("./assets/MenuBg.png")).convert_alpha()
         self.rect = self.image.get_rect()
-        pygame.mixer_music.load("./assets/Menu.mp3")
+        pygame.mixer_music.load(resource_path("./assets/Menu.mp3"))
 
     def run(self) :
         """Exibe o menu e aguarda a seleção do usuário.

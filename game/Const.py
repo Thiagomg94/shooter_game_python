@@ -8,6 +8,29 @@ sem precisar editar múltiplos arquivos.
 
 import pygame
 from enum import Enum
+import sys
+import os
+
+def resource_path(relative_path: str) -> str:
+    """Retorna o caminho absoluto para um recurso do jogo.
+
+    Necessário para compatibilidade com executáveis gerados pelo PyInstaller.
+    Em desenvolvimento, retorna o caminho relativo à raiz do projeto.
+    No executável (.exe), os assets são extraídos para uma pasta temporária
+    (_MEIPASS) — essa função garante que o caminho aponte para o lugar certo
+    em ambos os casos.
+
+    Args:
+        relative_path: Caminho relativo ao recurso (ex: 'assets/Player1.png').
+
+    Returns:
+        Caminho absoluto válido tanto em desenvolvimento quanto no executável.
+    """
+    if hasattr(sys, '_MEIPASS'):
+        # executável: aponta para a pasta temporária criada pelo PyInstaller
+        return os.path.join(sys._MEIPASS, relative_path)
+    # desenvolvimento: aponta para a raiz do projeto
+    return os.path.join(os.path.abspath("."), relative_path)
 
 # ---------------------------------------------------------------------------
 # C — Cores (R, G, B)

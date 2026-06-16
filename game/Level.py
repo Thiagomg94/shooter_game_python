@@ -10,7 +10,7 @@ from pygame import Surface, Rect
 from pygame.font import Font
 
 from game.Const import COLOR_WHITE, WIN_HEIGHT, MenuOption, EVENT_ENEMY, SPAWN_TIME, \
-    EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL, EVENT_HEALTH_ITEM
+    EVENT_TIMEOUT, TIMEOUT_STEP, TIMEOUT_LEVEL, EVENT_HEALTH_ITEM, resource_path
 from game.Enemy import Enemy
 from game.Entity import Entity
 from game.EntityFactory import EntityFactory
@@ -80,7 +80,7 @@ class Level:
                 Returns:
                     True se o nível foi completado com sucesso; False se todos os jogadores morreram.
                 """
-        pygame.mixer_music.load(f"./assets/{self.name}.mp3")
+        pygame.mixer_music.load(resource_path(f"./assets/{self.name}.mp3"))
         pygame.mixer_music.play(-1) # toca a música do nível em loop
         clock = pygame.time.Clock()
 
